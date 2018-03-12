@@ -1,6 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
 @media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-    body {
-        padding-top: 50px;
-    }
+  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+  body {
+    padding-top: 50px;
+  }
+}
+body {
+  background: rgb(1, 148, 141) !important;
+}
+div#root {
+  font-family: 'Montserrat' !important;
+  color: blue;
+}
+
+.route-wrapper {
+  position: relative;
+}
+
+.route-wrapper > div {
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+  background: hsla(177, 100%, 38%, 1);
+  /* border: 2px solid black; */
 }

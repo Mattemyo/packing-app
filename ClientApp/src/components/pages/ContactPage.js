@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../Footer';
 
-export default () => {
-  return (
-    <div>
-      <h1>hey</h1>
-    </div>
-  )
-}
+export default () => (
+  <div>
+    <h1>hey</h1>
+    <Footer />
+  </div>
+  
+);

@@ -37,16 +37,16 @@ const bounceTransition = {
   }
 };
 
-export default ({ children }) => {
-  return (
-    <AnimatedSwitch
-      atEnter={bounceTransition.atEnter}
-      atLeave={bounceTransition.atLeave}
-      atActive={bounceTransition.atActive}
-      mapStyles={mapStyles}
-      className="route-wrapper"
-    >
+export default ({ children }) => (
+  <AnimatedSwitch
+    atEnter={bounceTransition.atEnter}
+    atLeave={bounceTransition.atLeave}
+    atActive={bounceTransition.atActive}
+    mapStyles={mapStyles}
+    className="route-wrapper"
+  >
+
       {children}
-    </AnimatedSwitch>
-  );
-};
+   
+  </AnimatedSwitch>
+);
