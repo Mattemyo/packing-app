@@ -1,39 +1,35 @@
 import React from 'react';
 import { AnimatedSwitch, spring } from 'react-router-transition';
 
-// we need to map the `scale` prop we define below
+// we need to map the `translateX` prop we define below
 // to the transform style property
-function mapStyles(styles) {
-  return {
-    opacity: styles.opacity,
-    transform: `scale(${styles.scale})`
-  };
-}
+const mapStyles = ({ translateX, opacity }: { translateX: number, opacity: number }): {} => ({
+  opacity,
+  transform: `translateX(${translateX}%)`
+});
 
 // wrap the `spring` helper to use a bouncy config
-function bounce(val) {
-  return spring(val, {
-    stiffness: 300,
-    damping: 90
+const bounce = (val: {}): {} =>
+  spring(val, {
+    stiffness: 150,
+    damping: 20
   });
-}
-
 // child matches will...
 const bounceTransition = {
-  // start in a transparent, upscaled state
+  // start in a transparent, uptranslateXd state
   atEnter: {
     opacity: 0,
-    scale: 1
+    translateX: 25
   },
-  // leave in a transparent, downscaled state
+  // leave in a transparent, downtranslateXd state
   atLeave: {
     opacity: bounce(0),
-    scale: bounce(1)
+    translateX: bounce(-25)
   },
-  // and rest at an opaque, normally-scaled state
+  // and rest at an opaque, normally-translateXd state
   atActive: {
     opacity: bounce(1),
-    scale: bounce(1)
+    translateX: bounce(0)
   }
 };
 
@@ -45,8 +41,6 @@ export default ({ children }) => (
     mapStyles={mapStyles}
     className="route-wrapper"
   >
-
-      {children}
-   
+    {children}
   </AnimatedSwitch>
 );
