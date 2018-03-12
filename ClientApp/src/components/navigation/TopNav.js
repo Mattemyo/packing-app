@@ -8,10 +8,18 @@ export default class MenuExampleTabularOnTop extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { state: { activeItem }, props: { children } } = this;
+    const { state: { activeItem } } = this;
 
     return (
-      <Menu size="massive" color="teal" inverted attached="top" tabular stackable>
+      <Menu
+      
+        size="massive"
+        color="teal"
+        inverted
+        attached="top"
+        tabular
+        stackable
+      >
         <Menu.Item
           as={Link}
           to="/"

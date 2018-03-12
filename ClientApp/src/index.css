@@ -6,11 +6,10 @@
   }
 }
 body {
-  background: rgb(1, 148, 141) !important;
+  background: rgb(1, 148, 141);
 }
 div#root {
   font-family: 'Montserrat' !important;
-  color: blue;
 }
 
 .route-wrapper {
