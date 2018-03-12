@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-export default class MenuExampleTabularOnTop extends Component {
+export default class TopNav extends Component {
   state = { activeItem: 'packingList' };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -11,15 +11,7 @@ export default class MenuExampleTabularOnTop extends Component {
     const { state: { activeItem } } = this;
 
     return (
-      <Menu
-      
-        size="massive"
-        color="teal"
-        inverted
-        attached="top"
-        tabular
-        stackable
-      >
+      <Menu size="massive" color="teal" inverted attached="top" tabular stackable>
         <Menu.Item
           as={Link}
           to="/"

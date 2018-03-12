@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import ItemList from '../ItemList';
 
 export default (): Element<any> => (
-  <div style={{ margin: '50px 0' }}>
+  <div style={{ margin: '50px 0 0px' }}>
     <Container>
       <ItemList listName="Items to Pack" />
     </Container>

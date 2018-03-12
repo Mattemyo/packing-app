@@ -13,8 +13,8 @@ function mapStyles(styles) {
 // wrap the `spring` helper to use a bouncy config
 function bounce(val) {
   return spring(val, {
-    stiffness: 330,
-    damping: 22
+    stiffness: 300,
+    damping: 90
   });
 }
 
@@ -23,12 +23,12 @@ const bounceTransition = {
   // start in a transparent, upscaled state
   atEnter: {
     opacity: 0,
-    scale: 1.2
+    scale: 1
   },
   // leave in a transparent, downscaled state
   atLeave: {
     opacity: bounce(0),
-    scale: bounce(0.8)
+    scale: bounce(1)
   },
   // and rest at an opaque, normally-scaled state
   atActive: {

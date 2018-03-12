@@ -45,6 +45,15 @@ export default ({listName}): Element<any> => (
           <Segment style={segmentStyle}>
             <h4>Hello</h4>
           </Segment>
+          <Segment style={segmentStyle}>
+            <h4>Hello</h4>
+          </Segment>
+          <Segment style={segmentStyle}>
+            <h4>Hello</h4>
+          </Segment>
+          <Segment style={segmentStyle}>
+            <h4>Hello</h4>
+          </Segment>
         </Grid.Row>
       </Grid.Column>
     </Grid.Row>

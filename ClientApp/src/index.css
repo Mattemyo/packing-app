@@ -18,8 +18,9 @@ div#root {
 
 .route-wrapper > div {
   position: absolute;
-  min-height: 100vh;
+  padding: 0;
   width: 100%;
+  min-height: 100vh;
   background: hsla(177, 100%, 38%, 1);
   /* border: 2px solid black; */
 }
