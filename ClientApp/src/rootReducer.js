@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import item from './reducers/item';
+import { routerReducer } from 'react-router-redux';
+import items from './reducers/items';
 
 export default combineReducers({
-  item
+  items,
+  router: routerReducer
 });

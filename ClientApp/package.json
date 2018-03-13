@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "connected-react-router": "^4.3.0",
     "eslint-plugin-flowtype": "^2.46.1",
+    "history": "^4.7.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -16,6 +17,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "semantic-ui-css": "^2.3.0",
     "semantic-ui-react": "^0.78.3"

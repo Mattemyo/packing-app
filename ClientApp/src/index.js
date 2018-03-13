@@ -2,9 +2,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import history from 'history';
+import { createBrowserHistory } from 'history';
 import { ConnectedRouter, routerMiddleware, connectRouter } from 'connected-react-router';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -17,10 +17,11 @@ const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 
 // const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
 const history = createBrowserHistory();
 const store = createStore(
   connectRouter(history)(rootReducer), // new root reducer with router state
-  initialState,
+  rootReducer,
   composeWithDevTools(
     applyMiddleware(
       thunk,
@@ -33,10 +34,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      {' '}
       {/* place ConnectedRouter under Provider */}
       <Route component={App} />
-    </ConnectedRouter>{' '}
+    </ConnectedRouter>
     {/* place ConnectedRouter under Provider */}
   </Provider>,
   rootElement
