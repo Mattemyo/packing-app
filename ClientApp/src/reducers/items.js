@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 import { ITEM_CREATED } from '../constants/actionTypes';
+import { initialList } from '../utils/db';
 
 export default (
-  state: {} = {},
+  state: {} = initialList,
   { type, data: { entities: { items } } }: { type: string, items: [] } = {}
 ): {} => {
   switch (type) {

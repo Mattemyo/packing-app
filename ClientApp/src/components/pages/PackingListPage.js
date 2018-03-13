@@ -2,33 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
-
-const initialList = [
-  {
-    name: 'Towel',
-    isChecked: true
-  },
-  {
-    name: 'Toothbrush',
-    isChecked: true
-  },
-  {
-    name: 'Hair gel',
-    isChecked: true
-  },
-  {
-    name: 'Gillete Fusion Power',
-    isChecked: true
-  },
-  {
-    name: 'Computer',
-    isChecked: false
-  },
-  {
-    name: 'Bed sheets',
-    isChecked: false
-  }
-];
+import { connect } from 'react-redux';
 
 const segmentStyle = {
   background: '#008080',
@@ -36,10 +10,8 @@ const segmentStyle = {
   width: '100%'
 };
 
-export default class PackingListPage extends Component {
-  state = {
-    items: initialList
-  };
+class PackingListPage extends Component<{ items: [] }> {
+  state = {};
 
   render(): JSX.Element {
     const { state: { items } } = this;
@@ -77,3 +49,11 @@ export default class PackingListPage extends Component {
     );
   }
 }
+
+function mapStateToProps(state: {}): {} {
+  return {
+    books: allBooksSelector(state)
+  };
+}
+
+export default connect(mapStateToProps, fetchBooks)(PackingListPage);
