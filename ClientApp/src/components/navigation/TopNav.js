@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 export default class TopNav extends Component {
   state = { activeItem: 'packingList' };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = (e: {}, { name }: { name: String }) => {
+    this.setState({ activeItem: name });
+  };
 
-  render() {
+  render(): JSX.Element {
     const { state: { activeItem } } = this;
 
     return (
