@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Checkbox } from 'semantic-ui-react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { itemChecked } from '../actions/items';
 
 class Item extends Component {
   state = {
@@ -11,23 +12,31 @@ class Item extends Component {
     this.setState({ style: { transform: 'scaleY(1)' } });
   };
 
-  handleCheck = (e, element) => {
-    console.log('clicked', element);
+  handleCheck = (e, { name, checked }) => {
+    itemChecked({
+      name,
+      checked
+    });
   };
 
   render() {
-    const { state: { style }, props: { segmentStyle, isChecked }, handleCheck } = this;
+    const { state: { style }, props: { name, segmentStyle, isChecked }, handleCheck } = this;
 
     return (
       <Segment
         style={{ ...style, ...segmentStyle, display: 'flex', transition: 'all 0.2s ease-out' }}
       >
-        <Checkbox onClick={handleCheck} style={{ flex: 1 }} fitted={false} checked={isChecked} />
-        <h3 style={{ flex: 1, margin: 0 }}>Hello</h3>
+        <Checkbox
+          name={name}
+          onClick={handleCheck}
+          style={{ flex: 1 }}
+          fitted={false}
+          checked={isChecked}
+        />
+        <h3 style={{ flex: 1, margin: 0 }}>{name}</h3>
       </Segment>
     );
   }
 }
 
-
-export default connect(null, {checkItem})(Item);
+export default connect(null, { itemChecked })(Item);

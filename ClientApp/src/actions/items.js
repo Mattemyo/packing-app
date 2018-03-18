@@ -1,6 +1,6 @@
 import { ITEM_CREATED, ITEM_CHECKED } from '../constants/actionTypes';
 
-const itemChecked = (data) => ({
+export const itemChecked = (payload) => ({
   type: ITEM_CHECKED,
-  data
+  payload
 });

@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import Item from './Item';
 
 const ItemList = ({ listName, segmentStyle, items }) => {
-  const filteredItems = items.reduce((acc, item) => {
+  const filteredItems = [...items].reduce((acc, item) => {
     
-    const itemComponent = <Item key={item.name} isChecked={item.isChecked} />;
+    const itemComponent = <Item name={item.name} key={item.name} isChecked={item.isChecked} />;
 
     if (listName === 'Items Packed' && item.isChecked) {
       acc.push(itemComponent);
