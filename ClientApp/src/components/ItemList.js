@@ -1,16 +1,10 @@
 import React from 'react';
 import { Segment, Grid, Input, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
 import Item from './Item';
 
-export default ({
-  listName,
-  segmentStyle,
-  items
-}: {
-  listName: string,
-  segmentStyle: {},
-  items: []
-}): JSX.Element => (
+const ItemList = ({ listName, segmentStyle, items }) => (
   <Grid columns={2}>
     {/* Title Row */}
     <Grid.Row>
@@ -36,11 +30,19 @@ export default ({
       {/* Packed */}
       <Grid.Column>
         <Grid.Row>
-          {items.map((item: {}): JSX.Element => (
-            <Item key={item.name} segmentStyle={segmentStyle} />
-          ))}
+          {items.reduce(
+            (item) => (listName === 'Items to Pack' ? <Item isChecked={false} /> : <Item />)
+          )}
         </Grid.Row>
       </Grid.Column>
     </Grid.Row>
   </Grid>
 );
+
+function mapStateToProps(state = {}) {
+  return {
+    items: state.items
+  };
+}
+
+export default connect(mapStateToProps, {})(ItemList);

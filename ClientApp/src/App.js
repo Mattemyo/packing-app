@@ -7,7 +7,7 @@ import ContactPage from './components/pages/ContactPage';
 import SlideSwitch from './components/transitions/SlideSwitch';
 import TopHeader from './components/headers/TopHeader';
 
-export default (): Element<any> => (
+export default () => (
   <div>
     <TopHeader />
     <TopNav />

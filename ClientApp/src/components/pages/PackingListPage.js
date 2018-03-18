@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
-import { connect } from 'react-redux';
 
 const segmentStyle = {
   background: '#008080',
@@ -10,20 +9,20 @@ const segmentStyle = {
   width: '100%'
 };
 
-class PackingListPage extends Component<{ items: [] }> {
+class PackingListPage extends Component {
   state = {};
 
-  render(): JSX.Element {
-    const { state: { items } } = this;
+  render() {
+    const { props: { items } } = this;
 
     return (
       <div style={{ margin: '50px 0 0px' }}>
         {/* Unchecked */}
         <Container>
+
           <ItemList
             listName="Items to Pack"
             segmentStyle={segmentStyle}
-            items={items.filter((item: {}): boolean => !item.isChecked)}
           />
         </Container>
         <hr
@@ -41,7 +40,6 @@ class PackingListPage extends Component<{ items: [] }> {
           <ItemList
             listName="Items Packed"
             segmentStyle={segmentStyle}
-            items={items.filter((item: {}): boolean => item.isChecked)}
           />
         </Container>
         <Footer />
@@ -50,10 +48,4 @@ class PackingListPage extends Component<{ items: [] }> {
   }
 }
 
-function mapStateToProps(state: {}): {} {
-  return {
-    books: allBooksSelector(state)
-  };
-}
-
-export default connect(mapStateToProps, fetchBooks)(PackingListPage);
+export default PackingListPage;
