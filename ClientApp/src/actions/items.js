@@ -1,8 +1,6 @@
-import { CREATE_ITEM } from '../types';
+import { ITEM_CREATED, ITEM_CHECKED } from '../constants/actionTypes';
 
-export const createItem = (data: {}): {} => (dispatch: {}) => {
-  // api.books.create(data).then((books: {}) => {
-  //   dispatch(bookCreated(normalize(book, bookSchema)));
-  // });
-  dispatch(itemCreated(item));
-};
+const itemChecked = (data) => ({
+  type: ITEM_CHECKED,
+  data
+});
