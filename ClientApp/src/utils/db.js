@@ -1,4 +1,4 @@
-export const initialState = {
+export default {
   items: [
     {
       name: 'Towel',
@@ -24,5 +24,6 @@ export const initialState = {
       name: 'Bed sheets',
       isChecked: false
     }
-  ]
+  ],
+  users: [{ name: 'Matte', favColor: 'orange' }]
 };

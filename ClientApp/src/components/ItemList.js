@@ -1,12 +1,10 @@
 import React from 'react';
 import { Segment, Grid, Input, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-
 import Item from './Item';
 
 const ItemList = ({ listName, segmentStyle, items }) => {
-  const filteredItems = [...items].reduce((acc, item) => {
-    
+  const filteredItems = items.reduce((acc, item) => {
     const itemComponent = <Item name={item.name} key={item.name} isChecked={item.isChecked} />;
 
     if (listName === 'Items Packed' && item.isChecked) {
@@ -53,9 +51,7 @@ const ItemList = ({ listName, segmentStyle, items }) => {
 };
 
 function mapStateToProps(state = {}) {
-  return {
-    items: state.items
-  };
+  return state;
 }
 
 export default connect(mapStateToProps, {})(ItemList);

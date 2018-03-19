@@ -13,7 +13,7 @@ class Item extends Component {
   };
 
   handleCheck = (e, { name, checked }) => {
-    itemChecked({
+    this.props.itemChecked({
       name,
       checked
     });
