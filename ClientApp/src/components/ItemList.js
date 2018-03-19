@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Item from './Item';
 
 const ItemList = ({ listName, segmentStyle, items }) => {
+  // Filter Items
   const filteredItems = items.reduce((acc, item) => {
     const itemComponent = <Item name={item.name} key={item.name} isChecked={item.isChecked} />;
 
@@ -19,11 +20,13 @@ const ItemList = ({ listName, segmentStyle, items }) => {
   }, []);
 
   return (
-    <Grid columns={2}>
+    <Grid textAlign="center" columns={2}>
       {/* Title Row */}
       <Grid.Row>
+        {/* Spacer */}
         <Grid.Column width={5} />
-        <Grid.Column>
+        {/* Title */}
+        <Grid.Column width={10}>
           <Segment style={{ ...segmentStyle, background: 'darkgreen' }}>
             <h2>{listName}</h2>
           </Segment>
@@ -41,8 +44,8 @@ const ItemList = ({ listName, segmentStyle, items }) => {
             </Button>
           </Segment>
         </Grid.Column>
-        {/* Packed */}
-        <Grid.Column>
+        {/* Filtered Items */}
+        <Grid.Column width={10}>
           <Grid.Row>{filteredItems}</Grid.Row>
         </Grid.Column>
       </Grid.Row>

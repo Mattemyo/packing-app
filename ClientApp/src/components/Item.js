@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 import { Segment, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { itemChecked } from '../actions/items';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 
+// TODO: Make Item editable
 class Item extends Component {
   state = {
     style: { transform: 'scaleY(0)' }
   };
 
   componentDidMount = () => {
-    this.setState({ style: { transform: 'scaleY(1)' } });
+    setTimeout(() => {
+      this.setState({ style: { transform: 'scaleY(1)' } });
+    }, 150);
   };
 
   handleCheck = (e, { name, checked }) => {
-    this.props.itemChecked({
-      name,
-      checked
-    });
+    this.setState({ style: { transform: 'scaleY(0)', height: '60px' } });
+    setTimeout(() => {
+      this.props.itemChecked({
+        name,
+        checked
+      });
+    }, 150);
   };
 
   render() {
@@ -24,16 +31,16 @@ class Item extends Component {
 
     return (
       <Segment
-        style={{ ...style, ...segmentStyle, display: 'flex', transition: 'all 0.2s ease-out' }}
+        style={{
+          ...style,
+          ...segmentStyle,
+          display: 'flex',
+          transition: 'all 0.2s ease-out'
+        }}
       >
-        <Checkbox
-          name={name}
-          onClick={handleCheck}
-          style={{ flex: 1 }}
-          fitted={false}
-          checked={isChecked}
-        />
+        <Checkbox name={name} onClick={handleCheck} fitted={false} checked={isChecked} />
         <h3 style={{ flex: 1, margin: 0 }}>{name}</h3>
+        <Icon name="delete" />
       </Segment>
     );
   }

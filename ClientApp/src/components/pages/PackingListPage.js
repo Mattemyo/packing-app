@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
+import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
 
 const segmentStyle = {
   background: '#008080',
@@ -14,36 +15,38 @@ class PackingListPage extends Component {
 
   render() {
     const { props: { items } } = this;
+    const mobile = window.innerWidth < 786;
 
     return (
-      <div style={{ margin: '50px 0 0px' }}>
+      <Container style={{ margin: '50px 0 0px' }}>
         {/* Unchecked */}
-        <Container>
 
-          <ItemList
-            listName="Items to Pack"
-            segmentStyle={segmentStyle}
-          />
-        </Container>
-        <hr
-          style={{
-            margin: '50px auto',
-            width: '80%',
-            border: '0',
-            height: '1px',
-            backgroundImage:
-              'linear-gradient(to right, rgba(0, 0, 0, 0), #008080, rgba(0, 0, 0, 0))'
-          }}
-        />
-        {/* Checked */}
-        <Container>
-          <ItemList
-            listName="Items Packed"
-            segmentStyle={segmentStyle}
-          />
-        </Container>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={mobile ? 16 : 8}>
+              <ItemList listName="Items to Pack" segmentStyle={segmentStyle} />
+            </Grid.Column>
+            {/* Only display hr if mobile */}
+            {mobile && (
+              <hr
+                style={{
+                  margin: '50px auto',
+                  width: '80%',
+                  border: '0',
+                  height: '1px',
+                  backgroundImage:
+                    'linear-gradient(to right, rgba(0, 0, 0, 0), #008080, rgba(0, 0, 0, 0))'
+                }}
+              />
+            )}
+            {/* Checked */}
+            <Grid.Column width={mobile ? 16 : 8}>
+              <ItemList listName="Items Packed" segmentStyle={segmentStyle} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
         <Footer />
-      </div>
+      </Container>
     );
   }
 }
