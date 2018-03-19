@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { itemChecked } from '../actions/items';
+import { itemChecked, itemDeleted } from '../actions/items';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 
 // TODO: Make Item editable
@@ -27,8 +27,8 @@ class Item extends Component {
     this.animateLeave(this.props.itemChecked, { name, checked });
   };
 
-  removeItem = (e, { itemName }) => {
-    this.animateLeave(this.props.itemRemoved, { name: itemName });
+  deleteItem = () => {
+    this.animateLeave(this.props.itemDeleted, { name: this.props.name });
   };
 
   render() {
@@ -36,7 +36,7 @@ class Item extends Component {
       state: { style },
       props: { name, segmentStyle, isChecked },
       handleCheck,
-      removeItem
+      deleteItem
     } = this;
 
     return (
@@ -50,7 +50,7 @@ class Item extends Component {
       >
         <Checkbox name={name} onClick={handleCheck} fitted={false} checked={isChecked} />
         <h3 style={{ flex: 1, margin: 0 }}>{name}</h3>
-        <Icon onClick={removeItem} itemName={name} name="delete" />
+        <Icon onClick={deleteItem} name="delete" style={{ cursor: 'pointer' }} />
       </Segment>
     );
   }
