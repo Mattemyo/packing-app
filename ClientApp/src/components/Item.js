@@ -16,18 +16,28 @@ class Item extends Component {
     }, 150);
   };
 
-  handleCheck = (e, { name, checked }) => {
+  animateLeave = (action, elementAtrributes) => {
     this.setState({ style: { transform: 'scaleY(0)', height: '60px' } });
     setTimeout(() => {
-      this.props.itemChecked({
-        name,
-        checked
-      });
+      action(elementAtrributes);
     }, 150);
   };
 
+  handleCheck = (e, { name, checked }) => {
+    this.animateLeave(this.props.itemChecked, { name, checked });
+  };
+
+  removeItem = (e, { itemName }) => {
+    this.animateLeave(this.props.itemRemoved, { name: itemName });
+  };
+
   render() {
-    const { state: { style }, props: { name, segmentStyle, isChecked }, handleCheck } = this;
+    const {
+      state: { style },
+      props: { name, segmentStyle, isChecked },
+      handleCheck,
+      removeItem
+    } = this;
 
     return (
       <Segment
@@ -40,10 +50,10 @@ class Item extends Component {
       >
         <Checkbox name={name} onClick={handleCheck} fitted={false} checked={isChecked} />
         <h3 style={{ flex: 1, margin: 0 }}>{name}</h3>
-        <Icon name="delete" />
+        <Icon onClick={removeItem} itemName={name} name="delete" />
       </Segment>
     );
   }
 }
 
-export default connect(null, { itemChecked })(Item);
+export default connect(null, { itemChecked, itemDeleted })(Item);
