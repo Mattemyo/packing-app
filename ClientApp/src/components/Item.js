@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Segment, Checkbox, Input } from 'semantic-ui-react';
+import { Segment, Checkbox, Input, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { itemChecked, itemDeleted, itemUpdated } from '../actions/items';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
+import { itemChecked, itemUnchecked, itemDeleted, itemRenamed } from '../actions/items';
 
 // TODO: Make Item editable
 class Item extends Component {
@@ -37,8 +36,9 @@ class Item extends Component {
 
       // Dispatch: Update list of items after leaving input box, payload should include -->
       //  --> previous name and current name
-      if (!this.state.isEditable) {
-        this.props.itemUpdated({
+      if (!this.state.isEditable && this.state.name !== this.state.newName) {
+        // only fire if name actually has changed
+        this.props.itemRenamed({
           name: this.state.name,
           newName: this.state.newName
         });
@@ -50,8 +50,16 @@ class Item extends Component {
     this.setState({ newName: e.target.value });
   };
 
-  handleCheck = (e, { name, checked }) => {
-    this.animateLeave(this.props.itemChecked, { name, checked });
+  handleCheck = () => {
+    const { props: { isChecked, itemChecked, itemUnchecked }, state: { name } } = this;
+    // Choose which action to dispatch, checked or unchecked
+
+    this.animateLeave(isChecked ? itemUnchecked : itemChecked, {
+      name,
+      isChecked: !isChecked
+    });
+
+    // this.setState({ style: { transform: 'scaleY(1)' } });
   };
 
   animateLeave = (action, elementAtrributes) => {
@@ -116,4 +124,4 @@ class Item extends Component {
   }
 }
 
-export default connect(null, { itemChecked, itemDeleted, itemUpdated })(Item);
+export default connect(null, { itemChecked, itemUnchecked, itemDeleted, itemRenamed })(Item);

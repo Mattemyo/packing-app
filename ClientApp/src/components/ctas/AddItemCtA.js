@@ -13,6 +13,8 @@ class AddItemCtA extends Component {
   };
 
   submitNewItem = () => {
+    // check if input is empty
+    if (this.state.name === '') return;
     // dispatch action, payload contains the new item
     this.props.itemCreated({
       name: this.state.name,

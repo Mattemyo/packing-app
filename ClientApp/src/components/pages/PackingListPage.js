@@ -45,6 +45,7 @@ class PackingListPage extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <Footer />
       </Container>
     );
   }

@@ -1,7 +1,12 @@
-import { ITEM_CREATED, ITEM_CHECKED, ITEM_DELETED, ITEM_UPDATED } from '../constants/actionTypes';
+import { ITEM_CREATED, ITEM_CHECKED, ITEM_UNCHECKED, ITEM_DELETED, ITEM_RENAMED } from '../constants/actionTypes';
 
 export const itemChecked = (payload) => ({
   type: ITEM_CHECKED,
+  payload
+});
+
+export const itemUnchecked = (payload) => ({
+  type: ITEM_UNCHECKED,
   payload
 });
 
@@ -10,8 +15,8 @@ export const itemDeleted = (payload) => ({
   payload
 });
 
-export const itemUpdated = (payload) => ({
-  type: ITEM_UPDATED,
+export const itemRenamed = (payload) => ({
+  type: ITEM_RENAMED,
   payload
 });
 

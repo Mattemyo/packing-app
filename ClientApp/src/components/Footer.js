@@ -3,7 +3,7 @@ import React from 'react';
 export default () => (
   <div
     className="ui inverted vertical footer segment"
-    style={{ position: 'relative', bottom: '-140vh', background: '#00B5AD' }}
+    style={{ marginTop: '200px', background: '#00B5AD' }}
   >
     <div className="ui center aligned container">
       <h4 className="ui inverted header">&copy; Copyright 2017 | All rights reserved | Blahhh</h4>
