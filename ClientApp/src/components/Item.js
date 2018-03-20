@@ -82,14 +82,20 @@ class Item extends Component {
         }}
         onClick={toggleInputBox}
       >
-        <Checkbox name={name} onClick={handleCheck} fitted={false} checked={isChecked} />
+        <Checkbox
+          style={{ flex: 1 }}
+          name={name}
+          onClick={handleCheck}
+          fitted={false}
+          checked={isChecked}
+        />
         {isEditable ? (
           <Input
             ref={(input) => input && input.focus()}
             type="text"
             value={newName}
             placeholder={newName}
-            style={{ flex: 1, margin: 1, background: 'rgba(0, 0, 0, 0.5)' }}
+            style={{ flex: 1, maxWidth: '60%', margin: '0 5', background: 'rgba(0, 0, 0, 0.5)' }}
             onFocus={(e) => e.target.select()}
             onBlur={toggleInputBox}
             onChange={handleInputChange}
@@ -99,7 +105,7 @@ class Item extends Component {
           <h3 style={{ flex: 1, margin: 0 }}>{newName}</h3>
         )}
 
-        <Icon onClick={deleteItem} name="delete" style={{ cursor: 'pointer' }} />
+        <Icon onClick={deleteItem} name="delete" style={{ cursor: 'pointer', flex: 1 }} />
       </Segment>
     );
   }
