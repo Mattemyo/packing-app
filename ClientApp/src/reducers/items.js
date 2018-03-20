@@ -21,6 +21,8 @@ const items = (state = initialState.items, action = {}) => {
             : [...acc, item],
         []
       );
+    case ITEM_CREATED:
+      return [...state, action.payload];
     default:
       return state;
   }

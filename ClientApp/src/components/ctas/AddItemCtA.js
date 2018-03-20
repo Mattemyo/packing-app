@@ -8,14 +8,38 @@ class AddItemCtA extends Component {
     name: ''
   };
 
+  onInputChange = (e) => {
+    this.setState({ name: e.target.value });
+  };
+
+  submitNewItem = () => {
+    // dispatch action, payload contains the new item
+    this.props.itemCreated({
+      name: this.state.name,
+      isChecked: this.props.listName === 'Items Packed'
+    });
+    // reset input box
+    this.setState({ name: '' });
+  };
+
   render() {
-    const { props: { segmentStyle, listName } } = this;
+    const { props: { segmentStyle }, onInputChange, submitNewItem, state: { name } } = this;
 
     return (
       <Segment style={segmentStyle}>
         <h3>Add New Item</h3>
-        <Input size="small" style={{ opacity: '0.5' }} />
-        <Button style={{ marginLeft: '20px' }} size="small" color="green">
+        <Input
+          value={name}
+          onChange={onInputChange}
+          onKeyPress={(e) => e.which === 13 && submitNewItem()}
+          style={{ opacity: '0.5', maxWidth: '96%' }}
+        />
+        <Button
+          onClick={submitNewItem}
+          style={{ margin: '6px auto', width: '80%' }}
+          size="small"
+          color="green"
+        >
           Add
         </Button>
       </Segment>

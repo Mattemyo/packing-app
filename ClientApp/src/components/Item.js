@@ -95,7 +95,12 @@ class Item extends Component {
             type="text"
             value={newName}
             placeholder={newName}
-            style={{ flex: 1, maxWidth: '60%', margin: '0 5', background: 'rgba(0, 0, 0, 0.5)' }}
+            style={{
+              flex: 1,
+              maxWidth: '60%',
+              height: '30px',
+              background: 'rgba(0, 0, 0, 0.5)'
+            }}
             onFocus={(e) => e.target.select()}
             onBlur={toggleInputBox}
             onChange={handleInputChange}
