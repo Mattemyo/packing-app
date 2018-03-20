@@ -6,7 +6,14 @@ import Item from './Item';
 const ItemList = ({ listName, segmentStyle, items }) => {
   // Filter Items
   const filteredItems = items.reduce((acc, item) => {
-    const itemComponent = <Item name={item.name} key={item.name} isChecked={item.isChecked} />;
+    const itemComponent = (
+      <Item
+        segmentStyle={segmentStyle}
+        name={item.name}
+        key={item.name}
+        isChecked={item.isChecked}
+      />
+    );
 
     if (listName === 'Items Packed' && item.isChecked) {
       acc.push(itemComponent);
