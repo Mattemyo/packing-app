@@ -2,6 +2,7 @@ import React from 'react';
 import { Segment, Grid, Input, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Item from './Item';
+import AddItemCtA from './ctas/AddItemCtA';
 
 const ItemList = ({ listName, segmentStyle, items }) => {
   // Filter Items
@@ -16,11 +17,11 @@ const ItemList = ({ listName, segmentStyle, items }) => {
     );
 
     if (listName === 'Items Packed' && item.isChecked) {
-      acc.push(itemComponent);
+      return [...acc, itemComponent];
     }
 
     if (listName === 'Items to Pack' && !item.isChecked) {
-      acc.push(itemComponent);
+      return [...acc, itemComponent];
     }
 
     return acc;
@@ -43,13 +44,7 @@ const ItemList = ({ listName, segmentStyle, items }) => {
       <Grid.Row>
         {/* New Item column */}
         <Grid.Column width={5}>
-          <Segment style={segmentStyle}>
-            <h3>Add New Item</h3>
-            <Input size="small" style={{ opacity: '0.5' }} />
-            <Button style={{ marginLeft: '20px' }} size="small" color="green">
-              Add
-            </Button>
-          </Segment>
+          <AddItemCtA segmentStyle={segmentStyle} listName={listName} />
         </Grid.Column>
         {/* Filtered Items */}
         <Grid.Column width={10}>

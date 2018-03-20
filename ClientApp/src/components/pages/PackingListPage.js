@@ -15,7 +15,7 @@ class PackingListPage extends Component {
 
   render() {
     const { props: { items } } = this;
-    const mobile = window.innerWidth < 786;
+    const tablet = window.innerWidth < 1200;
 
     return (
       <Container style={{ margin: '50px 0 0px' }}>
@@ -23,11 +23,11 @@ class PackingListPage extends Component {
 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={mobile ? 16 : 8}>
+            <Grid.Column width={tablet ? 16 : 8}>
               <ItemList listName="Items to Pack" segmentStyle={segmentStyle} />
             </Grid.Column>
-            {/* Only display hr if mobile */}
-            {mobile && (
+            {/* Only display hr if tablet */}
+            {tablet && (
               <hr
                 style={{
                   margin: '50px auto',
@@ -40,12 +40,11 @@ class PackingListPage extends Component {
               />
             )}
             {/* Checked */}
-            <Grid.Column width={mobile ? 16 : 8}>
+            <Grid.Column width={tablet ? 16 : 8}>
               <ItemList listName="Items Packed" segmentStyle={segmentStyle} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
-     
       </Container>
     );
   }

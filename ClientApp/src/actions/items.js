@@ -14,3 +14,8 @@ export const itemUpdated = (payload) => ({
   type: ITEM_UPDATED,
   payload
 });
+
+export const itemCreated = (payload) => ({
+  type: ITEM_CREATED,
+  payload
+});
