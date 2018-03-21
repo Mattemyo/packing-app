@@ -3,6 +3,7 @@ import { Container } from 'semantic-ui-react';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
+import SaveListCtA from '../ctas/SaveListCtA';
 
 const segmentStyle = {
   background: '#008080',
@@ -13,8 +14,12 @@ const segmentStyle = {
 class PackingListPage extends Component {
   state = {};
 
+  handleListSave = () => {
+    
+  }
+
   render() {
-    const { props: { items } } = this;
+    const { props: { items }, handleListSave } = this;
     const tablet = window.innerWidth < 1200;
 
     return (
@@ -43,6 +48,9 @@ class PackingListPage extends Component {
             <Grid.Column width={tablet ? 16 : 8}>
               <ItemList listName="Items Packed" segmentStyle={segmentStyle} />
             </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <SaveListCtA handleListSave={handleListSave} />
           </Grid.Row>
         </Grid>
         <Footer />
