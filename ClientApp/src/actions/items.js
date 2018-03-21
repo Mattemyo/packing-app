@@ -4,7 +4,8 @@ import {
   ITEM_UNCHECKED,
   ITEM_DELETED,
   ITEM_RENAMED,
-  LIST_SAVED
+  LIST_SAVED,
+  LOCAL_STORAGE_LIST_RETREIVED
 } from '../constants/actionTypes';
 
 export const itemChecked = (payload) => ({
@@ -29,6 +30,11 @@ export const itemRenamed = (payload) => ({
 
 export const itemCreated = (payload) => ({
   type: ITEM_CREATED,
+  payload
+});
+
+export const localStorageListRetrieved = (payload) => ({
+  type: LOCAL_STORAGE_LIST_RETREIVED,
   payload
 });
 

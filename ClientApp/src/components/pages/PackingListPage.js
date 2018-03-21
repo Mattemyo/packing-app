@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
+import { localStorageListRetrieved } from '../../actions/items';
 import SaveListCtA from '../ctas/SaveListCtA';
 
 const segmentStyle = {
@@ -13,10 +15,18 @@ const segmentStyle = {
 class PackingListPage extends Component {
   state = {};
 
+  componentDidMount = () => {
+    //  get info from localstorage when mounting
+    const savedList = JSON.parse(localStorage.getItem('list'));
+
+    if (savedList) localStorageListRetrieved(savedList);
+  };
+
   handleListSave = () => {
     // dispatch action
     // for now: cheat and just save to localStorage
-    localStorage.setItem('list', this.props.items);
+    localStorage.setItem('list', JSON.stringify(this.props.items));
+    console.log(localStorage.getItem('list'));
 
     // code below for talking to api, postpone that
     // this.props.listSaved();
@@ -63,4 +73,8 @@ class PackingListPage extends Component {
   }
 }
 
-export default PackingListPage;
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps, { localStorageListRetrieved })(PackingListPage);
