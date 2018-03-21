@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import Footer from '../Footer';
 import ItemList from '../ItemList';
-import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
 import SaveListCtA from '../ctas/SaveListCtA';
 
 const segmentStyle = {
@@ -15,8 +14,13 @@ class PackingListPage extends Component {
   state = {};
 
   handleListSave = () => {
-    
-  }
+    // dispatch action
+    // for now: cheat and just save to localStorage
+    localStorage.setItem('list', this.props.items);
+
+    // code below for talking to api, postpone that
+    // this.props.listSaved();
+  };
 
   render() {
     const { props: { items }, handleListSave } = this;

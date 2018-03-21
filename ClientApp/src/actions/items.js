@@ -1,4 +1,11 @@
-import { ITEM_CREATED, ITEM_CHECKED, ITEM_UNCHECKED, ITEM_DELETED, ITEM_RENAMED, LIST_SAVED } from '../constants/actionTypes';
+import {
+  ITEM_CREATED,
+  ITEM_CHECKED,
+  ITEM_UNCHECKED,
+  ITEM_DELETED,
+  ITEM_RENAMED,
+  LIST_SAVED
+} from '../constants/actionTypes';
 
 export const itemChecked = (payload) => ({
   type: ITEM_CHECKED,
@@ -24,3 +31,5 @@ export const itemCreated = (payload) => ({
   type: ITEM_CREATED,
   payload
 });
+
+export const listSaved = () => ({ type: LIST_SAVED });
