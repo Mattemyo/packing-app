@@ -15,10 +15,11 @@ const segmentStyle = {
 class PackingListPage extends Component {
   state = {};
 
-  componentDidMount = () => {
+  componentWillReceiveProps = () => {
     //  get info from localstorage when mounting
     const savedList = JSON.parse(localStorage.getItem('list'));
 
+    console.log(savedList);
     if (savedList) localStorageListRetrieved(savedList);
   };
 

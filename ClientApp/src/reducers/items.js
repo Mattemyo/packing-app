@@ -8,7 +8,10 @@ import {
 } from '../constants/actionTypes';
 import initialState from '../utils/db';
 
-const items = (state = initialState.items, action = {}) => {
+const items = (
+  state = JSON.parse(localStorage.getItem('list')) || initialState.items,
+  action = {}
+) => {
   switch (action.type) {
     case ITEM_CHECKED:
     case ITEM_UNCHECKED:
@@ -32,7 +35,7 @@ const items = (state = initialState.items, action = {}) => {
     case ITEM_CREATED:
       return [...state, action.payload];
     case LOCAL_STORAGE_LIST_RETREIVED:
-      return action.payload;
+      return [...state, ...action.payload];
     default:
       return state;
   }
