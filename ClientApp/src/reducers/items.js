@@ -4,7 +4,6 @@ import {
   ITEM_DELETED,
   ITEM_UNCHECKED,
   ITEM_RENAMED,
-  LOCAL_STORAGE_LIST_RETREIVED
 } from '../constants/actionTypes';
 import initialState from '../utils/db';
 
@@ -34,8 +33,7 @@ const items = (
       return state.filter((item) => item.name !== action.payload.name);
     case ITEM_CREATED:
       return [...state, action.payload];
-    case LOCAL_STORAGE_LIST_RETREIVED:
-      return [...state, ...action.payload];
+  
     default:
       return state;
   }
